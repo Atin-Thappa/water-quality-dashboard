@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Quality Dashboard - Guest</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="js/config.js"></script>
+    <script defer src="js/map.js"></script>
+    <script defer src="js/sidebar.js"></script>
+    <script defer src="js/guest-dashboard.js"></script>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="logo-section">
+                    <p>{Place Holder}</p>
+                    <div class="logo-text">
+                        <h2>Water Quality</h2>
+                        <span>Monitoring</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-content">
+                <!-- City Selector -->
+                <div class="control-group">
+                    <label for="citySelect">Select City</label>
+                    <select id="citySelect">
+                        <option value="">Select a city</option>
+                        <option value="Rohini">Rohini</option>
+                        <option value="Pitampura">Pitampura</option>
+                        <option value="ModelTown">Model Town</option>
+                        <option value="Azadpur">Azadpur</option>
+                        <option value="Narela">Narela</option>
+                        <option value="Saket">Saket</option>
+                        <option value="Dwarka">Dwarka</option>
+                        <option value="VasantKunj">Vasant Kunj</option>
+                        <option value="HauzKhas">Hauz Khas</option>
+                        <option value="MalviyaNagar">Malviya Nagar</option>
+                        <option value="Janakpuri">Janakpuri</option>
+                        <option value="RajouriGarden">Rajouri Garden</option>
+                        <option value="PunjabiBagh">Punjabi Bagh</option>
+                        <option value="KarolBagh">Karol Bagh</option>
+                        <option value="ConnaughtPlace">Connaught Place</option>
+                        <option value="LaxmiNagar">Laxmi Nagar</option>
+                        <option value="MayurVihar">Mayur Vihar</option>
+                        <option value="PreetVihar">Preet Vihar</option>
+                        <option value="Shahdara">Shahdara</option>
+                        <option value="AnandVihar">Anand Vihar</option>
+                    </select>
+                </div>
+
+                <a href="complaint-form.html" class="complaint-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    Lodge Complaint
+                </a>
+
+                <!-- Info Section -->
+                <div class="info-section">
+                    <h3>How it works</h3>
+                    <ol>
+                        <li>Select your city from the dropdown</li>
+                        <li>View existing complaints on the map</li>
+                        <li>Click "Lodge Complaint" to report an issue</li>
+                    </ol>
+
+                    <div class="severity-legend">
+                        <h4>Severity Levels</h4>
+                        <div class="legend-item">
+                            <span class="legend-dot good"></span>
+                            <span>Good - Water quality acceptable</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot poor"></span>
+                            <span>Poor - Needs attention</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot severe"></span>
+                            <span>Severe - Critical issue</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="index.html" class="back-link">← Back to Login</a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Map Container -->
+            <div id="map" class="map-container"></div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="spinner"></div>
+                <p>Loading map...</p>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
