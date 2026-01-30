@@ -4,13 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Quality Monitoring</title>
+    <title>Water Quality Monitoring - Login</title>
     <link rel="stylesheet" href="css/global.css">
-    <script defer src="js/config.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <script defer src="js/auth.js"></script>
 </head>
 
 <body>
-    <h1>Water Quality Dashboard</h1>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Logo and Title -->
+            <div class="login-header">
+                <div class="logo-placeholder">
+                    <p> {PLACE HOLDER} </p>
+                </div>
+                <h1>Water Quality Monitoring</h1>
+                <p class="subtitle">Community-driven water safety reporting</p>
+            </div>
+            <!-- Who's logging in? -->
+            <div class="login-options">
+                <button class="btn-primary" id="loginBtn">
+                    LOGIN
+                </button>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <a href="guest-dashboard.html" class="btn-secondary">
+                    View as Guest
+                </a>
+            </div>
+            <!-- Who does what? -->
+            <div class="login-footer">
+                <p class="info-text">
+                    <strong>Citizens:</strong> Report water quality issues in your area<br>
+                    <strong>Officials:</strong> Monitor and resolve complaints
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
