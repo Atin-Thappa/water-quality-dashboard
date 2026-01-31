@@ -6,10 +6,10 @@ let currentCity = null;
 
 // Initialize map
 function initMap() {
-    map = L.map('map').setView(defaultCenter, defaultZoom);
+    map = L.map(`map`).setView(defaultCenter, defaultZoom);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    L.tileLayer(`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`, {
+        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`,
         maxZoom: 19
     }).addTo(map);
 
@@ -21,7 +21,7 @@ function initMap() {
 
 // Add custom marker styles
 function addMarkerStyles() {
-    const style = document.createElement('style');
+    const style = document.createElement(`style`);
     style.textContent = `
         .custom-marker {
             width: 30px;
@@ -43,7 +43,7 @@ function createCustomIcon(severity) {
     const className = `marker-${severity.toLowerCase()}`;
 
     return L.divIcon({
-        className: 'custom-div-icon',
+        className: `custom-div-icon`,
         html: `<div class="custom-marker ${className}"></div>`,
         iconSize: [30, 30],
         iconAnchor: [15, 15],
@@ -56,7 +56,7 @@ function addMarker(complaint) {
     const coords = cityCoords[complaint.city];
 
     if (!coords) {
-        console.error('Coordinates not found for city:', complaint.city);
+        console.error(`Coordinates not found for city:`, complaint.city);
         return;
     }
 
@@ -84,7 +84,7 @@ function createPopupContent(complaint) {
             <p><strong>Status:</strong> <span style="color: ${severityColor}">${severityLabel}</span></p>
             <p><strong>Reported by:</strong> ${complaint.name}</p>
             <p><strong>Email:</strong> ${complaint.email}</p>
-            ${complaint.date ? `<p><strong>Date:</strong> ${formatDate(complaint.date)}</p>` : ''}
+            ${complaint.date ? `<p><strong>Date:</strong> ${formatDate(complaint.date)}</p>` : ``}
         </div>
     `;
 }

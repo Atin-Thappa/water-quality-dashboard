@@ -7,11 +7,11 @@ function initGuestDashboard() {
     guestMap = initMap();
 
     // city selector
-    const cityDropdown = document.getElementById('citySelector');
+    const cityDropdown = document.getElementById(`citySelector`);
     if (cityDropdown) {
         populateCitySelector(cityDropdown);
 
-        cityDropdown.addEventListener('change', (e) => {
+        cityDropdown.addEventListener(`change`, (e) => {
             const selectedCity = e.target.value;
             if (selectedCity) {
                 guestCurrentCity = selectedCity;
@@ -31,10 +31,10 @@ function initGuestDashboard() {
 
 // Add to city selector
 function populateCitySelector(selectElement) {
-    selectElement.innerHTML = '<option value="">All Cities</option>';
+    selectElement.innerHTML = `<option value="">All Cities</option>`;
 
     Object.keys(cityCoords).forEach(city => {
-        const option = document.createElement('option');
+        const option = document.createElement(`option`);
         option.value = city;
         option.textContent = city;
         selectElement.appendChild(option);
@@ -42,4 +42,4 @@ function populateCitySelector(selectElement) {
 }
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', initGuestDashboard);
+document.addEventListener(`DOMContentLoaded`, initGuestDashboard);

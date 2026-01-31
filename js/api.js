@@ -62,6 +62,7 @@ async function submitComplaint(complaintData) {
 }
 
 // Resolve complaint
+
 async function resolveComplaint(complaintId) {
     try {
         const response = await fetch(`${baseURL}/complaint/resolve/${complaintId}`, {

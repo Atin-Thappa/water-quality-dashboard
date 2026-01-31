@@ -8,11 +8,11 @@ function initAdminDashboard() {
     adminMap = initMap();
 
     // Setup city selector
-    const cityDropdown = document.getElementById('citySelector');
+    const cityDropdown = document.getElementById(`citySelector`);
     if (cityDropdown) {
         populateAdminCitySelector(cityDropdown);
 
-        cityDropdown.addEventListener('change', (e) => {
+        cityDropdown.addEventListener(`change`, (e) => {
             const selectedCity = e.target.value;
             if (selectedCity) {
                 adminCurrentCity = selectedCity;
@@ -29,7 +29,7 @@ function initAdminDashboard() {
     }
 
     // Setup marker
-    map.on('popupopen', (e) => {
+    map.on(`popupopen`, (e) => {
         const marker = e.popup._source;
         if (marker.complaintData) {
             selectedComplaint = marker.complaintData;
@@ -38,9 +38,9 @@ function initAdminDashboard() {
     });
 
     // Resolve button
-    const resolveBtn = document.getElementById('resolveBtn');
+    const resolveBtn = document.getElementById(`resolveBtn`);
     if (resolveBtn) {
-        resolveBtn.addEventListener('click', handleResolveComplaint);
+        resolveBtn.addEventListener(`click`, handleResolveComplaint);
     }
 
     // Load initial complaints
@@ -49,10 +49,10 @@ function initAdminDashboard() {
 
 // Add to city selector
 function populateAdminCitySelector(selectElement) {
-    selectElement.innerHTML = '<option value="">All Cities</option>';
+    selectElement.innerHTML = `<option value="">All Cities</option>`;
 
     Object.keys(cityCoords).forEach(city => {
-        const option = document.createElement('option');
+        const option = document.createElement(`option`);
         option.value = city;
         option.textContent = city;
         selectElement.appendChild(option);
@@ -61,11 +61,11 @@ function populateAdminCitySelector(selectElement) {
 
 // Update complaint info panel
 function updateComplaintInfo(complaint) {
-    const infoPanel = document.getElementById('complaintInfo');
-    const resolveBtn = document.getElementById('resolveBtn');
+    const infoPanel = document.getElementById(`complaintInfo`);
+    const resolveBtn = document.getElementById(`resolveBtn`);
 
     if (!complaint) {
-        infoPanel.innerHTML = '<p class="no-selection">Select a marker on the map to view details</p>';
+        infoPanel.innerHTML = `<p class="no-selection">Select a marker on the map to view details</p>`;
         resolveBtn.disabled = true;
         return;
     }
@@ -95,7 +95,7 @@ function updateComplaintInfo(complaint) {
                     <span class="detail-label">Date:</span>
                     <span class="detail-value">${formatDate(complaint.date)}</span>
                 </div>
-            ` : ''}
+            ` : ``}
         </div>
     `;
 
@@ -105,24 +105,24 @@ function updateComplaintInfo(complaint) {
 // Handle resolve complaint
 async function handleResolveComplaint() {
     if (!selectedComplaint) {
-        showNotification('Please select a complaint to resolve', 'error');
+        showNotification(`Please select a complaint to resolve`, `error`);
         return;
     }
 
     if (!selectedComplaint.id) {
-        showNotification('Invalid complaint data', 'error');
+        showNotification(`Invalid complaint data`, `error`);
         return;
     }
 
     // Confirm
-    if (!confirm('Are you sure you want to mark this complaint as resolved?')) {
+    if (!confirm(`Are you sure you want to mark this complaint as resolved?`)) {
         return;
     }
 
     const result = await resolveComplaint(selectedComplaint.id);
 
     if (result.success) {
-        showNotification('Issue marked as resolved', 'success');
+        showNotification(`Issue marked as resolved`, `success`);
 
         // Clear selection
         selectedComplaint = null;
@@ -134,9 +134,9 @@ async function handleResolveComplaint() {
         // Reload complaints
         loadComplaintsOnMap(adminCurrentCity);
     } else {
-        showNotification('Failed to resolve complaint. Please try again.', 'error');
+        showNotification(`Failed to resolve complaint. Please try again.`, `error`);
     }
 }
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', initAdminDashboard);
+document.addEventListener(`DOMContentLoaded`, initAdminDashboard);
