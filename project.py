@@ -67,3 +67,11 @@ def raise_complaint(user_gmail, user_city, water_quality):
         if 'conn' in locals() and conn.is_connected():
             cursor.close()
             conn.close()
+# if __name__ == "__main__":
+#     print(f"DEBUG: Trying to use password: {os.getenv('DB_PASS')}")
+#     try:
+#         conn = get_db_connection()
+#         print("✅ SUCCESS: Connected to the database!")
+#         conn.close()
+#     except Exception as e:
+#         print(f"❌ DETAILED ERROR: {e}")
