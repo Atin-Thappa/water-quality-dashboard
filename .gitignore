@@ -1,7 +1,6 @@
-# System Files
+.env
+__pycache__/
 .DS_Store
 Thumbs.db
-
-# Editor files
 .vscode/
 .idea/
