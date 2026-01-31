@@ -22,7 +22,7 @@ CREATE TABLE city_dataset (
 );
 
 CREATE TABLE complaints (
-    complaint_id INT PRIMARY KEY,
+    complaint_id INT PRIMARY KEY AUTO_INCREMENT,
     user_gmail VARCHAR(100),
     city_name VARCHAR(100),
     reported_status ENUM('Good','Bad','Severe'),
@@ -146,3 +146,4 @@ INSERT INTO complaints VALUES
 
 (1035,'alok@gmail.com','Preet Vihar','Bad','Pending','2025-03-12');
 
+ALTER TABLE complaints AUTO_INCREMENT = 1036;
