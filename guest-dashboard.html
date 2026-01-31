@@ -4,122 +4,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Quality Dashboard - Guest</title>
+    <title>Guest Dashboard - Water Quality Monitor</title>
 
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/report-form.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script defer src="js/config.js"></script>
-    <script defer src="js/map.js"></script>
-    <script defer src="js/sidebar.js"></script>
-    <script defer src="js/guest-dashboard.js"></script>
 </head>
 
 <body>
+    <!-- Mobile -->
+    <button class="hamburger-menu" id="hamburgerToggle">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
     <div class="dashboard-container">
         <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
+        <aside class="sidebar">
             <div class="sidebar-header">
-                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
-                <div class="logo-section">
-                    <p>{Place Holder}</p>
-                    <div class="logo-text">
-                        <h2>Water Quality</h2>
-                        <span>Monitoring</span>
-                    </div>
+                <div class="sidebar-container">
+                    <h1 class="sidebar-title">Water Quality Monitor</h1>
                 </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <span> &lt-&gt </span>
+                </button>
             </div>
 
             <div class="sidebar-content">
-                <!-- City Selector -->
-                <div class="control-group">
-                    <label for="citySelect">Select City</label>
-                    <select id="citySelect">
-                        <option value="">Select a city</option>
-                        <option value="Rohini">Rohini</option>
-                        <option value="Pitampura">Pitampura</option>
-                        <option value="ModelTown">Model Town</option>
-                        <option value="Azadpur">Azadpur</option>
-                        <option value="Narela">Narela</option>
-                        <option value="Saket">Saket</option>
-                        <option value="Dwarka">Dwarka</option>
-                        <option value="VasantKunj">Vasant Kunj</option>
-                        <option value="HauzKhas">Hauz Khas</option>
-                        <option value="MalviyaNagar">Malviya Nagar</option>
-                        <option value="Janakpuri">Janakpuri</option>
-                        <option value="RajouriGarden">Rajouri Garden</option>
-                        <option value="PunjabiBagh">Punjabi Bagh</option>
-                        <option value="KarolBagh">Karol Bagh</option>
-                        <option value="ConnaughtPlace">Connaught Place</option>
-                        <option value="LaxmiNagar">Laxmi Nagar</option>
-                        <option value="MayurVihar">Mayur Vihar</option>
-                        <option value="PreetVihar">Preet Vihar</option>
-                        <option value="Shahdara">Shahdara</option>
-                        <option value="AnandVihar">Anand Vihar</option>
-                    </select>
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Select City</h3>
+                    <div class="form-group">
+                        <label for="citySelector">City</label>
+                        <select id="citySelector" class="city-selector">
+                            <option value="">All Cities</option>
+                        </select>
+                    </div>
                 </div>
 
-                <a href="complaint-form.html" class="complaint-btn">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                    Lodge Complaint
-                </a>
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Actions</h3>
+                    <div class="sidebar-actions">
+                        <button class="btn btn-primary action-btn" id="openReportBtn">
+                            + Report Complaint
+                        </button>
+                        <button class="btn btn-outline action-btn" onclick="window.location.href='index.html'">
+                            Back to Login
+                        </button>
+                    </div>
+                </div>
 
-                <!-- Info Section -->
-                <div class="info-section">
-                    <h3>How it works</h3>
-                    <ol>
-                        <li>Select your city from the dropdown</li>
-                        <li>View existing complaints on the map</li>
-                        <li>Click "Lodge Complaint" to report an issue</li>
-                    </ol>
-
-                    <div class="severity-legend">
-                        <h4>Severity Levels</h4>
+                <div class="sidebar-section">
+                    <div class="map-legend">
+                        <h4 class="legend-title">Water Quality Status</h4>
                         <div class="legend-item">
-                            <span class="legend-dot good"></span>
-                            <span>Good - Water quality acceptable</span>
+                            <div class="legend-color" style="background-color: #22c55e;"></div>
+                            <span class="legend-label">Good</span>
                         </div>
                         <div class="legend-item">
-                            <span class="legend-dot poor"></span>
-                            <span>Poor - Needs attention</span>
+                            <div class="legend-color" style="background-color: #eab308;"></div>
+                            <span class="legend-label">Poor</span>
                         </div>
                         <div class="legend-item">
-                            <span class="legend-dot severe"></span>
-                            <span>Severe - Critical issue</span>
+                            <div class="legend-color" style="background-color: #ef4444;"></div>
+                            <span class="legend-label">Severe</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="sidebar-footer">
-                <a href="index.html" class="back-link">← Back to Login</a>
-            </div>
         </aside>
 
-        <!-- Main Content Area -->
-        <main class="main-content">
-            <!-- Map Container -->
-            <div id="map" class="map-container"></div>
-
-            <!-- Loading Overlay -->
-            <div class="loading-overlay" id="loadingOverlay">
-                <div class="spinner"></div>
-                <p>Loading map...</p>
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="map-container">
+                <div id="map"></div>
             </div>
         </main>
     </div>
 
+    <!-- Report -->
+    <div class="modal-overlay" id="reportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Report Water Quality Issue</h2>
+                <button class="modal-close" id="closeReportModal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="reportForm" class="report-form">
+                    <div class="form-group">
+                        <label for="complaintName">
+                            Name <span class="required">*</span>
+                        </label>
+                        <input type="text" id="complaintName" name="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complaintEmail">
+                            Email <span class="required">*</span>
+                        </label>
+                        <input type="email" id="complaintEmail" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complaintCity">
+                            City <span class="required">*</span>
+                        </label>
+                        <select id="complaintCity" name="city" required>
+                            <option value="">Select City</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complaintStatus">
+                            Water Quality Status <span class="required">*</span>
+                        </label>
+                        <select id="complaintStatus" name="status" required>
+                            <option value="">Select Status</option>
+                            <option value="good">Good</option>
+                            <option value="poor">Poor</option>
+                            <option value="severe">Severe</option>
+                        </select>
+                        <div class="status-info">
+                            <div class="status-indicator good"></div>
+                            <span>Good</span>
+                            <div class="status-indicator poor"></div>
+                            <span>Poor</span>
+                            <div class="status-indicator severe"></div>
+                            <span>Severe</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancelReport">Cancel</button>
+                <button type="submit" form="reportForm" class="btn btn-primary">Submit Complaint</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/coords.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/report-form.js"></script>
+    <script src="js/guest-dashboard.js"></script>
 </body>
 
 </html>

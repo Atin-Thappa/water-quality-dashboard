@@ -4,46 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Quality Monitoring - Login</title>
+    <title>Login - Water Quality Monitoring Dashboard</title>
+
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/login.css">
-    <script defer src="js/auth.js"></script>
 </head>
 
 <body>
     <div class="login-container">
         <div class="login-card">
-            <!-- Logo and Title -->
             <div class="login-header">
-                <div class="logo-placeholder">
-                    <p> {PLACE HOLDER} </p>
-                </div>
-                <h1>Water Quality Monitoring</h1>
-                <p class="subtitle">Community-driven water safety reporting</p>
+                <h1>Water Quality Monitoring Dashboard</h1>
+                <p>Monitor and report water quality issues in your area</p>
             </div>
-            <!-- Who's logging in? -->
-            <div class="login-options">
-                <button class="btn-primary" id="loginBtn">
+
+            <div class="login-note">
+                <strong>Note:</strong> Login is only for municipal staff. They will need to use their MCD staff email.
+                To issue a complaint, View as Guest
+            </div>
+
+            <div class="login-buttons">
+                <button class="login-btn login-btn-primary" id="loginBtn">
                     LOGIN
                 </button>
 
-                <div class="divider">
-                    <span>or</span>
-                </div>
-
-                <a href="guest-dashboard.html" class="btn-secondary">
+                <button class="login-btn login-btn-secondary" id="guestBtn">
                     View as Guest
-                </a>
+                </button>
             </div>
-            <!-- Who does what? -->
+
             <div class="login-footer">
-                <p class="info-text">
-                    <strong>Citizens:</strong> Report water quality issues in your area<br>
-                    <strong>Officials:</strong> Monitor and resolve complaints
+                <p>&copy; 2025 Water Quality Monitoring Dashboard.
+                    <br>
+                    All rights reserved.
                 </p>
             </div>
         </div>
     </div>
+
+    <script>
+        // Redirect to Admin (implementing login verifiaction later)
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            window.location.href = 'admin-dashboard.html';
+        });
+
+        // Redirect to Guest
+        document.getElementById('guestBtn').addEventListener('click', () => {
+            window.location.href = 'guest-dashboard.html';
+        });
+    </script>
 </body>
 
 </html>
