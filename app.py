@@ -49,6 +49,27 @@ def list_complaints():
     conn.close()
 
     return jsonify(complaints)
+@app.route("/api/map-data", methods=["GET"])
+def get_map_data():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+        
+        # We fetch the city and its status to show on the map
+        query = "SELECT city_name, overall_quality FROM city_dataset"
+        cursor.execute(query)
+        city_data = cursor.fetchall()
+        
+        return jsonify({
+            "status": "success",
+            "data": city_data
+        })
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+    finally:
+        if 'conn' in locals() and conn.is_connected():
+            cursor.close()
+            conn.close()
 
 
 if __name__ == "__main__":
