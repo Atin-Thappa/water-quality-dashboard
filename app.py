@@ -74,6 +74,21 @@ def get_map_data():
             cursor.close()
             conn.close()
 
+@app.route("/complaint/resolve/<int:complaint_id>", methods=["PUT"])
+def resolve_complaint_api(complaint_id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        query = "UPDATE complaints SET work_status = 'Resolved' WHERE complaint_id = %s"
+        cursor.execute(query, (complaint_id,))
+        
+        conn.commit()
+        cursor.close()
+        conn.close()
+        
+        return jsonify({"status": "success", "message": f"Complaint {complaint_id} resolved"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=1000,debug=True)
