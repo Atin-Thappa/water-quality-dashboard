@@ -1,7 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from project import mcd_login, raise_complaint, get_db_connection
 
+
 app = Flask(__name__)
+CORS(app)
 
 #MCD LOGIN API
 @app.route("/mcd/login", methods=["POST"])
