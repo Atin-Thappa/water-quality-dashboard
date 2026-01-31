@@ -39,7 +39,7 @@ def raise_complaint(user_gmail, user_city, water_quality):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        
+
         cursor.execute("SELECT * FROM users WHERE user_gmail = %s", (user_gmail,))
         if not cursor.fetchone():
             return {"error": "User not found"}
@@ -52,11 +52,28 @@ def raise_complaint(user_gmail, user_city, water_quality):
             VALUES (%s, %s, %s, %s, %s)
         """
         cursor.execute(insert_query, (user_gmail, user_city, water_quality, "Pending", datetime.now()))
-        cursor.execute("SELECT * FROM city_dataset WHERE city_name = %s", (user_city,))
-        if cursor.fetchone():
-            cursor.execute("UPDATE city_dataset SET overall_quality = %s WHERE city_name = %s", (water_quality, user_city))
-        else:
-            cursor.execute("INSERT INTO city_dataset (city_name, overall_quality) VALUES (%s, %s)", (user_city, water_quality))
+
+        freq_query = """
+            SELECT reported_status, COUNT(*) as cnt
+            FROM complaints
+            WHERE city_name = %s
+            GROUP BY reported_status
+            ORDER BY cnt DESC
+            LIMIT 1
+        """
+        cursor.execute(freq_query, (user_city,))
+        most_frequent = cursor.fetchone()
+
+        if most_frequent:
+            most_status = most_frequent[0]
+
+            cursor.execute("SELECT * FROM city_dataset WHERE city_name = %s", (user_city,))
+            if cursor.fetchone():
+                update_query = "UPDATE city_dataset SET overall_quality = %s WHERE city_name = %s"
+                cursor.execute(update_query, (most_status, user_city))
+            else:
+                insert_dataset_query = "INSERT INTO city_dataset (city_name, overall_quality) VALUES (%s, %s)"
+                cursor.execute(insert_dataset_query, (user_city, most_status))
 
         conn.commit()
         return {"message": "Complaint raised successfully"}

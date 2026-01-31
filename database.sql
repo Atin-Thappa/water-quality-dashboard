@@ -22,7 +22,7 @@ CREATE TABLE city_dataset (
 );
 
 CREATE TABLE complaints (
-    complaint_id INT PRIMARY KEY,
+    complaint_id INT PRIMARY KEY AUTO_INCREMENT,
     user_gmail VARCHAR(100),
     city_name VARCHAR(100),
     reported_status ENUM('Good','Bad','Severe'),
@@ -71,26 +71,31 @@ INSERT INTO users VALUES
 ('tina@gmail.com','Tina Sood','Pitampura','Bad'),
 ('varun@gmail.com','Varun Saxena','Vasant Kunj','Good');
 
-INSERT INTO city_dataset VALUES
+INSERT INTO city_dataset (city_name, overall_quality) VALUES
 ('Rohini','Bad'),
 ('Pitampura','Bad'),
 ('Model Town','Bad'),
 ('Azadpur','Bad'),
 ('Narela','Severe'),
+
 ('Saket','Good'),
 ('Dwarka','Good'),
 ('Vasant Kunj','Good'),
 ('Hauz Khas','Bad'),
 ('Malviya Nagar','Bad'),
+
 ('Janakpuri','Bad'),
 ('Rajouri Garden','Bad'),
 ('Punjabi Bagh','Bad'),
 ('Karol Bagh','Bad'),
 ('Connaught Place','Bad'),
+
 ('Laxmi Nagar','Severe'),
 ('Mayur Vihar','Bad'),
 ('Preet Vihar','Bad'),
-('Shahdara','Severe');
+('Shahdara','Severe'),
+('Anand Vihar','Bad');
+
 
 INSERT INTO complaints VALUES
 
@@ -140,3 +145,5 @@ INSERT INTO complaints VALUES
 (1034,'rohit@gmail.com','Dwarka','Good','Resolved','2025-03-08'),
 
 (1035,'alok@gmail.com','Preet Vihar','Bad','Pending','2025-03-12');
+
+ALTER TABLE complaints AUTO_INCREMENT = 1036;
