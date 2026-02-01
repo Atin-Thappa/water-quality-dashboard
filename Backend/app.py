@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from Backend.project import mcd_login, raise_complaint, get_db_connection
+from project import mcd_login, raise_complaint, get_db_connection
 
 
 app = Flask(__name__)
