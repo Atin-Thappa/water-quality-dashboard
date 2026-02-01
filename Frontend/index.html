@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Water Quality Monitoring Dashboard</title>
+    <title>Login - Water Quality Monitoring DashBoard</title>
 
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/login.css">
@@ -14,13 +14,13 @@
     <div class="login-container">
         <div class="login-card">
             <div class="login-header">
-                <h1>Water Quality Monitoring Dashboard</h1>
+                <h1>Water Quality Monitoring DashBoard</h1>
                 <p>Monitor and report water quality issues in your area</p>
             </div>
 
             <div class="login-note">
                 <strong>Note:</strong> Login is only for municipal staff. They will need to use their MCD staff email.
-                To issue a complaint, View as Guest
+                To file a complaint, View as Guest.
             </div>
 
             <div class="login-buttons">
@@ -42,17 +42,54 @@
         </div>
     </div>
 
-    <script>
-        // Redirect to Admin (implementing login verifiaction later)
-        document.getElementById('loginBtn').addEventListener('click', () => {
-            window.location.href = 'admin-dashboard.html';
-        });
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content login-modal-content">
+            <div class="modal-header">
+                <h2>MCD Staff Login</h2>
+                <button class="modal-close" id="closeLoginModal">&times;</button>
+            </div>
 
-        // Redirect to Guest
-        document.getElementById('guestBtn').addEventListener('click', () => {
-            window.location.href = 'guest-dashboard.html';
-        });
-    </script>
+            <div class="modal-body">
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="mcdEmail">
+                            MCD Staff Email <span class="required">*</span>
+                        </label>
+                        <input type="email" id="mcdEmail" name="email" placeholder="example@mcd.in" required
+                            autocomplete="email">
+                        <p class="form-hint">Must be a valid MCD staff email (@mcd.in)</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mcdPassword">
+                            Password <span class="required">*</span>
+                        </label>
+                        <input type="password" id="mcdPassword" name="password" placeholder="Enter your password"
+                            required autocomplete="current-password">
+                    </div>
+
+                    <div class="form-group" id="loginError" style="display: none;">
+                        <div class="alert alert-danger">
+                            <span id="loginErrorMessage"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancelLogin">Cancel</button>
+                <button type="submit" form="loginForm" class="btn btn-primary" id="submitLogin">
+                    Login
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

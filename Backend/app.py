@@ -1,8 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from project import mcd_login, raise_complaint, get_db_connection
 import os
-
+from project import mcd_login, raise_complaint, get_db_connection
 app = Flask(__name__)
 CORS(app)
 
@@ -91,5 +90,4 @@ def resolve_complaint_api(complaint_id):
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000)) 
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0",port=1000,debug=True)
