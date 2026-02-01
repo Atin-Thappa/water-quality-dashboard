@@ -90,4 +90,8 @@ def resolve_complaint_api(complaint_id):
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=1000,debug=True)
+    host = os.getenv("FLASK_HOST", "0.0.0.0")
+    port = int(os.getenv("FLASK_PORT", 1000))
+    debug = os.getenv("FLASK_DEBUG", "True") == "True"
+
+    app.run(host=host, port=port, debug=debug)
