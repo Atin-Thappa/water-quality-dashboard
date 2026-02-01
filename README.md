@@ -464,7 +464,7 @@ This project is created for academic purposes.
 ## Team
 
 - Atin Thappa - Frontend
-- Diksa Gupta - Backend
+- Diksha Gupta - Backend
 - Kasak Jha - Backend
 - Mouli Gupta - Database
 
