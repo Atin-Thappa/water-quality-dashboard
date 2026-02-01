@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guest Dashboard - Water Quality Monitor</title>
+    <title>Admin Dashboard - Water Quality Monitoring</title>
 
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/report-form.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
@@ -32,7 +31,7 @@
                     <h1 class="sidebar-title">Water Quality Monitor</h1>
                 </div>
                 <button class="sidebar-toggle" id="sidebarToggle">
-                    <span> &lt-&gt </span>
+                    <span>%lt-%gt</span>
                 </button>
             </div>
 
@@ -48,14 +47,24 @@
                 </div>
 
                 <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Complaint Details</h3>
+                    <div id="complaintInfo">
+                        <p class="no-selection">Select a marker on the map to view details</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
                     <h3 class="sidebar-section-title">Actions</h3>
                     <div class="sidebar-actions">
-                        <button class="btn btn-primary action-btn" id="openReportBtn">
-                            + Report Complaint
+                        <button class="btn btn-success action-btn" id="resolveBtn" disabled>
+                            Mark as Resolved
                         </button>
-                        <button class="btn btn-outline action-btn" onclick="window.location.href='index.html'">
-                            Back to Login
+                        <button class="btn btn-outline action-btn" id="logoutBtn">
+                            Logout
                         </button>
+                    </div>
+
+                    <div class="user-info" id="userInfo" style="margin-top: 20px;">
                     </div>
                 </div>
 
@@ -87,77 +96,21 @@
         </main>
     </div>
 
-    <!-- Report -->
-    <div class="modal-overlay" id="reportModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Report Water Quality Issue</h2>
-                <button class="modal-close" id="closeReportModal">&times;</button>
-            </div>
-
-            <div class="modal-body">
-                <form id="reportForm" class="report-form">
-                    <div class="form-group">
-                        <label for="complaintName">
-                            Name <span class="required">*</span>
-                        </label>
-                        <input type="text" id="complaintName" name="name" placeholder="Enter your name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="complaintEmail">
-                            Email <span class="required">*</span>
-                        </label>
-                        <input type="email" id="complaintEmail" name="email" placeholder="Enter your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="complaintCity">
-                            City <span class="required">*</span>
-                        </label>
-                        <select id="complaintCity" name="city" required>
-                            <option value="">Select City</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="complaintStatus">
-                            Water Quality Status <span class="required">*</span>
-                        </label>
-                        <select id="complaintStatus" name="status" required>
-                            <option value="">Select Status</option>
-                            <option value="good">Good</option>
-                            <option value="poor">Poor</option>
-                            <option value="severe">Severe</option>
-                        </select>
-                        <div class="status-info">
-                            <div class="status-indicator good"></div>
-                            <span>Good</span>
-                            <div class="status-indicator poor"></div>
-                            <span>Poor</span>
-                            <div class="status-indicator severe"></div>
-                            <span>Severe</span>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline" id="cancelReport">Cancel</button>
-                <button type="submit" form="reportForm" class="btn btn-primary">Submit Complaint</button>
-            </div>
-        </div>
-    </div>
-
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Login Check -->
+    <script>
+        if (!sessionStorage.getItem('mcd_logged_in')) {
+            // Not logged in, redirect to login page
+            window.location.href = 'index.html';
+        }
+    </script>
     <script src="js/config.js"></script>
     <script src="js/coords.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/api.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/map.js"></script>
-    <script src="js/report-form.js"></script>
-    <script src="js/guest-dashboard.js"></script>
+    <script src="js/admin-dashboard.js"></script>
 </body>
 
 </html>
