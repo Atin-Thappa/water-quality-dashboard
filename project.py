@@ -6,10 +6,11 @@ from dotenv import load_dotenv
 load_dotenv()
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
+        host=os.getenv("DB_HOST"),
+        port=int(os.getenv("DB_PORT", 3306)),  # Railway uses 44223
+        user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASS"),
-        database="mcd_water_management"
+        database=os.getenv("DB_NAME")
     )
 
 def mcd_login(mcd_gmail, mcd_password):
