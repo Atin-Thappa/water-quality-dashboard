@@ -4,23 +4,7 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Problem Statement](#problem-statement)
-- [Solution Overview](#solution-overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [System Architecture](#system-architecture)
-- [Installation & Setup](#installation--setup)
-- [Usage Guide](#usage-guide)
-- [Project Status](#project-status)
-- [Future Enhancements](#future-enhancements)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
-## 🎯 Problem Statement
+## Problem Statement
 
 In many parts of India, citizens face recurring issues with unsafe or poor-quality water supply, but lack an accessible, reliable, and low-effort way to report these issues to the appropriate municipal authorities. Existing reporting mechanisms are either manual, fragmented, or poorly maintained, leading to low citizen participation and delayed response from authorities. As a result, water quality issues often go unreported, unresolved, or addressed too late, directly impacting public health and quality of life.
 
@@ -28,7 +12,7 @@ There is a need for a simple, location-based, citizen-driven digital platform th
 
 ---
 
-## 💡 Solution Overview
+## Solution Overview
 
 The Community Water Quality Monitoring Dashboard is a web-based platform that bridges the gap between citizens and municipal authorities in addressing water quality issues. The solution provides:
 
@@ -54,9 +38,9 @@ The Community Water Quality Monitoring Dashboard is a web-based platform that br
 
 ---
 
-## ✨ Features
+## Features
 
-### 🌐 Public Features (Guest Access)
+### Public Features (Guest Access)
 - ✅ Interactive map with Leaflet.js showing all water quality complaints
 - ✅ Color-coded markers (Green: Good, Yellow: Poor, Red: Severe)
 - ✅ City-wise filtering across 20 locations in Delhi
@@ -65,7 +49,7 @@ The Community Water Quality Monitoring Dashboard is a web-based platform that br
 - ✅ Responsive design (Desktop, Tablet, Mobile)
 - ✅ Collapsible sidebar for better map viewing
 
-### 🔐 Admin Features (MCD Staff Only)
+### Admin Features (MCD Staff Only)
 - ✅ Secure authentication with MCD email validation
 - ✅ Session-based access control
 - ✅ View all pending complaints on interactive map
@@ -75,7 +59,7 @@ The Community Water Quality Monitoring Dashboard is a web-based platform that br
 - ✅ Logout functionality
 - ✅ Same responsive design and filtering capabilities
 
-### 🎨 User Experience
+### User Experience
 - ✅ Loading indicators for better feedback
 - ✅ Toast notifications for user actions
 - ✅ Modal-based forms for clean interface
@@ -85,7 +69,7 @@ The Community Water Quality Monitoring Dashboard is a web-based platform that br
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 | Technology | Purpose | Version |
@@ -119,7 +103,7 @@ The Community Water Quality Monitoring Dashboard is a web-based platform that br
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -171,7 +155,7 @@ The Community Water Quality Monitoring Dashboard is a web-based platform that br
 
 ---
 
-## 📦 Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Python 3.11 or higher
@@ -257,7 +241,7 @@ const baseURL = 'https://your-backend-url.com'; // For production
 
 ---
 
-## 📖 Usage Guide
+## Usage Guide
 
 ### For Citizens (Guest Users)
 
@@ -343,11 +327,11 @@ karan@gmail.com
 
 ---
 
-## ✅ Project Status
+## Project Status
 
 ### Completed Features
 
-#### Core Functionality ✅
+#### Core Functionality
 - [x] User-friendly complaint submission form
 - [x] Interactive map with Leaflet.js integration
 - [x] Real-time complaint visualization
@@ -356,7 +340,7 @@ karan@gmail.com
 - [x] Admin complaint management
 - [x] Complaint resolution workflow
 
-#### Technical Implementation ✅
+#### Technical Implementation
 - [x] RESTful API architecture
 - [x] MySQL database with proper schema
 - [x] Session-based authentication
@@ -366,7 +350,7 @@ karan@gmail.com
 - [x] Error handling and validation
 - [x] Frontend-backend integration
 
-#### User Interface ✅
+#### User Interface
 - [x] Professional login page
 - [x] Guest dashboard with reporting capability
 - [x] Admin dashboard with management tools
@@ -376,7 +360,7 @@ karan@gmail.com
 - [x] Toast notifications
 - [x] User info display for admins
 
-#### Deployment ✅
+#### Deployment
 - [x] Backend deployed on Render
 - [x] Frontend deployment-ready
 - [x] Environment configuration
@@ -384,7 +368,7 @@ karan@gmail.com
 
 ---
 
-## 🚧 Out of Scope / Future Enhancements
+## Out of Scope / Future Enhancements
 
 ### Phase 1 (Not Implemented - Suggested for Future)
 
@@ -447,7 +431,7 @@ karan@gmail.com
 
 ---
 
-## 🏆 Key Achievements
+## Key Achievements
 
 1. **Fully Functional Platform**: End-to-end workflow from complaint submission to resolution
 2. **Real-Time Visualization**: Geographic representation of water quality issues
@@ -457,7 +441,7 @@ karan@gmail.com
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 This is an academic project. For contributions or improvements:
 
@@ -469,7 +453,7 @@ This is an academic project. For contributions or improvements:
 
 ---
 
-## 📄 License
+## License
 
 This project is created for academic purposes.
 
@@ -477,7 +461,7 @@ This project is created for academic purposes.
 
 ---
 
-## 👥 Team
+## Team
 
 - Atin Thappa - Frontend
 - Diksa Gupta - Backend
@@ -486,7 +470,7 @@ This project is created for academic purposes.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Municipal Corporation of Delhi (MCD) for the problem domain
 - OpenStreetMap contributors for map data
@@ -495,7 +479,7 @@ This project is created for academic purposes.
 
 ---
 
-## 📞 Support
+## Support
 
 For issues or questions:
 - Create an issue in the repository
@@ -503,7 +487,7 @@ For issues or questions:
 
 ---
 
-## 🔗 Links
+## Links
 
 - **Live Demo**: https://water-quality-dashboard-sigma.vercel.app
 - **Backend API**: https://water-quality-dashboard-1.onrender.com
@@ -512,7 +496,7 @@ For issues or questions:
 
 ---
 
-## 📊 Project Statistics
+## Project Statistics
 
 - **Total Lines of Code**: ~5000+
 - **Frontend Files**: 15+
