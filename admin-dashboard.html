@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Water Quality Monitor</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+    <!-- Hamburger Menu (Mobile) -->
+    <button class="hamburger-menu" id="hamburgerToggle">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-container">
+                    <h1 class="sidebar-title">Water Quality Monitor</h1>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <span> &lt-&gt </span>
+                </button>
+            </div>
+
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Select City</h3>
+                    <div class="form-group">
+                        <label for="citySelector">City</label>
+                        <select id="citySelector" class="city-selector">
+                            <option value="">All Cities</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Complaint Details</h3>
+                    <div id="complaintInfo">
+                        <p class="no-selection">Select a marker on the map to view details</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Actions</h3>
+                    <div class="sidebar-actions">
+                        <button class="btn btn-success action-btn" id="resolveBtn" disabled>
+                            Mark as Resolved
+                        </button>
+                        <button class="btn btn-outline action-btn" onclick="window.location.href='index.html'">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="map-legend">
+                        <h4 class="legend-title">Water Quality Status</h4>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #22c55e;"></div>
+                            <span class="legend-label">Good</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #eab308;"></div>
+                            <span class="legend-label">Poor</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #ef4444;"></div>
+                            <span class="legend-label">Severe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/coords.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+
+</html>

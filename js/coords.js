@@ -20,5 +20,3 @@ const cityCoords = {
     Shahdara: [28.6692, 77.2794],
     AnandVihar: [28.6466, 77.3150]
 };
-
-export { cityCoords };
